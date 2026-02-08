@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+
+  empleados-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: empleados-service
+
+    ports:
+      - "8080:8080"
+
+    restart: unless-stopped

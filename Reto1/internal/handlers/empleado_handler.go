@@ -1,3 +1,4 @@
+// Package handlers provides HTTP handlers for employee operations.
 package handlers
 
 import (
@@ -8,16 +9,19 @@ import (
 	"strings"
 )
 
+// EmpleadoHandler handles HTTP requests for employees.
 type EmpleadoHandler struct {
 	service *service.EmpleadoService
 }
 
+// NewEmpleadoHandler creates a new instance of EmpleadoHandler.
 func NewEmpleadoHandler(service *service.EmpleadoService) *EmpleadoHandler {
 	return &EmpleadoHandler{
 		service: service,
 	}
 }
 
+// RegistrarEmpleado handles POST requests to register a new employee.
 func (h *EmpleadoHandler) RegistrarEmpleado(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != http.MethodPost {
@@ -40,6 +44,7 @@ func (h *EmpleadoHandler) RegistrarEmpleado(w http.ResponseWriter, r *http.Reque
 	json.NewEncoder(w).Encode(resultado)
 }
 
+// ObtenerEmpleado handles GET requests to retrieve an employee by ID.
 func (h *EmpleadoHandler) ObtenerEmpleado(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != http.MethodGet {
